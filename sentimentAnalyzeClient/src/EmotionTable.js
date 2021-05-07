@@ -1,29 +1,27 @@
-import React from 'react';
-import './bootstrap.min.css';
+import React from "react";
+import "./bootstrap.min.css";
 
 class EmotionTable extends React.Component {
-    render() {
-        return (
-            <div>
-                {/* You can remove this line and the line below.
-          {JSON.stringify(this.props.emotions)} */}
-                <table className="table table-bordered">
-                    <tbody>
-                        {
-                            Object.entries(this.props.emotions).map(function (mapentry) {
-                                return (
-                                    <tr>
-                                        <td>{mapentry[0]}</td>
-                                        <td>{mapentry[1]}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
-
+  render() {
+    const emotionstomap = this.props.emotions;
+    const mappingemotions = Object.keys(emotionstomap).map((ems) => {
+      console.log(ems);
+      return (
+        <>
+          <tr>
+            <td>{ems}</td>
+            <td>{emotionstomap[ems]}</td>
+          </tr>
+        </>
+      );
+    });
+    return (
+      <div>
+        <table className="table table-bordered">
+          <tbody>{mappingemotions}</tbody>
+        </table>
+      </div>
+    );
+  }
 }
 export default EmotionTable;
